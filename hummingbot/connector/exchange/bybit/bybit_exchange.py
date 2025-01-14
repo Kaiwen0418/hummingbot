@@ -526,9 +526,11 @@ class BybitExchange(ExchangePyBase):
         self._account_balances.clear()
         for coin in balances["result"]["list"][0]["coin"]:
             name = coin["coin"]
-            free_balance = Decimal(coin["free"]) if self._account_type == "SPOT" \
-                else Decimal(coin["availableToWithdraw"])
+            locked = Decimal(coin["locked"])
+            # free_balance = Decimal(coin["free"]) if self._account_type == "SPOT" \
+            #     else Decimal(coin["availableToWithdraw"])
             balance = Decimal(coin["walletBalance"])
+            free_balance = balance - locked
             self._account_available_balances[name] = free_balance
             self._account_balances[name] = Decimal(balance)
 

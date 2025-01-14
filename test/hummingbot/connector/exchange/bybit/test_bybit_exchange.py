@@ -249,8 +249,8 @@ class TestBybitExchange(unittest.TestCase):
                             "tickSize": "0.01"
                         },
                         "riskParameters": {
-                            "limitParameter": "0.05",
-                            "marketParameter": "0.05"
+                            "priceLimitRatioX": "0.01",
+                            "priceLimitRatioY": "0.02"
                         }
                     }
                 ]
